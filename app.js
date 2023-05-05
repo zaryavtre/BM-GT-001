@@ -16,7 +16,7 @@ function handleCart() {
       cartTemplat += `
           <div class="total">
             <div class="cart-order">
-            <p>${guitarCart.name}</p>
+            <p class="cart-guitar-name">${guitarCart.name}</p>
             <button class="remove">Remove</button>
             </div>
               <div class="price-order">

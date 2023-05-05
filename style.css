@@ -13,6 +13,13 @@ h3 {
   margin: 0;
 }
 
+button {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .main {
   max-width: 600px;
   background-color: white;
@@ -114,10 +121,6 @@ h3 {
   width: 45px;
   height: 45px;
   font-size: 1.5em;
-  outline: none;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
   border-radius: 14px;
   transition: all 300ms;
 }
@@ -128,4 +131,18 @@ h3 {
 
 .cart-section {
   height: 150px;
+}
+
+.total {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+.cart-guitar-name {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1em;
 }
