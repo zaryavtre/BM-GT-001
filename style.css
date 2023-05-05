@@ -130,7 +130,25 @@ button {
 }
 
 .cart-section {
-  height: 150px;
+  height: 250px;
+  padding: 25px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.your-order {
+  font-family: 'Metal Mania', cursive;
+  align-self: center;
+  text-decoration: underline;
+  font-size: 1.8em;
+  display: none;
+}
+
+.items-here {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
 }
 
 .total {
@@ -139,7 +157,7 @@ button {
   align-items: center;
   align-content: center;
   justify-content: space-between;
-  padding: 25px;
+  column-gap: 15px;
 }
 
 .cart-guitar-name {
