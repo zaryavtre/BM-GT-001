@@ -12,12 +12,24 @@ document.addEventListener('click', function (e) {
 })
 
 function removeOrder(removeBtn) {
-  const targetRemoveId = cartArr.filter(function (remove) {
+  /*   const targetRemoveId = cartArr.filter(function (remove) {
     return remove.id === removeBtn
   })[0]
 
-  cartArr.pop(targetRemoveId)
+  const index = cartArr.findIndex((cartObj) => {
+    return cartObj.id === targetRemoveId
+  }) */
+  const targetRemoveId = cartArr
+    .map(function (remove) {
+      return remove.id
+    })
+    .indexOf(removeBtn)
+
+  cartArr.splice(targetRemoveId, 1)
+  targetRemoveId.remove()
+
   renderGuitars()
+  console.log(cartArr)
 }
 
 function handleCart() {
