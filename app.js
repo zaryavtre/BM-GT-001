@@ -1,23 +1,37 @@
 import { guitarsData } from '/data.js'
 
 const cartArr = []
+const yourOrderH2 = document.querySelector('.your-order')
 
 document.addEventListener('click', function (e) {
   if (e.target.dataset.number) {
     handleCartButton(e.target.dataset.number)
+  } else if (e.target.dataset.remove) {
+    removeOrder(e.target.dataset.remove)
   }
 })
+
+function removeOrder(removeBtn) {
+  const targetRemoveId = cartArr.filter(function (remove) {
+    return remove.id === removeBtn
+  })[0]
+
+  cartArr.pop(targetRemoveId)
+  renderGuitars()
+}
 
 function handleCart() {
   if (cartArr.length > 0) {
     let cartTemplat = ''
+
+    yourOrderH2.style.display = 'block'
 
     cartArr.forEach((guitarCart) => {
       cartTemplat += `
           <div class="total">
             <div class="cart-order">
             <p class="cart-guitar-name">${guitarCart.name}</p>
-            <button class="remove">Remove</button>
+            <button class="remove" data-remove="${guitarCart.id}">Remove</button>
             </div>
               <div class="price-order">
                 <p class="final-price">${guitarCart.price}</p>
@@ -35,7 +49,7 @@ function handleCartButton(guitarNumber) {
   })[0]
 
   cartArr.push(targetGuitarId)
-  document.querySelector('.cart-section').innerHTML = handleCart()
+  document.querySelector('.items-here').innerHTML = handleCart()
   renderGuitars()
 }
 
