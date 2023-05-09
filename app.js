@@ -12,13 +12,6 @@ document.addEventListener('click', function (e) {
 })
 
 function removeOrder(removeBtn) {
-  /*   const targetRemoveId = cartArr.filter(function (remove) {
-    return remove.id === removeBtn
-  })[0]
-
-  const index = cartArr.findIndex((cartObj) => {
-    return cartObj.id === targetRemoveId
-  }) */
   const targetRemoveId = cartArr
     .map(function (remove) {
       return remove.id
@@ -26,10 +19,11 @@ function removeOrder(removeBtn) {
     .indexOf(removeBtn)
 
   cartArr.splice(targetRemoveId, 1)
-  targetRemoveId.remove()
+  const totalDiv = document.querySelector(`.total[data-number="${removeBtn}"]`)
+  totalDiv.remove()
+  console.log(cartArr)
 
   renderGuitars()
-  console.log(cartArr)
 }
 
 function handleCart() {
@@ -40,10 +34,10 @@ function handleCart() {
 
     cartArr.forEach((guitarCart) => {
       cartTemplat += `
-          <div class="total">
+          <div class="total" data-number="${guitarCart.id}">
             <div class="cart-order">
             <p class="cart-guitar-name">${guitarCart.name}</p>
-            <button class="remove" data-remove="${guitarCart.id}">Remove</button>
+            <button class="remove" data-remove="${guitarCart.id}">Remove ❌</button>
             </div>
               <div class="price-order">
                 <p class="final-price">${guitarCart.price}</p>

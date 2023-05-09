@@ -164,3 +164,12 @@ button {
   font-family: 'Noto Sans', sans-serif;
   font-size: 1em;
 }
+
+.remove {
+  text-decoration: underline 0.15em rgb(255, 255, 255);
+  transition: all 300ms;
+}
+
+.remove:hover {
+  text-decoration-color: black;
+}
