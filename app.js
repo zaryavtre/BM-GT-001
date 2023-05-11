@@ -11,6 +11,21 @@ document.addEventListener('click', function (e) {
   }
 })
 
+/* function priceTotal() {
+  if (cartArr.length > 0) {
+    let TotalPriceTemplate = ''
+    cartArr.forEach((guitarPrice) => {
+      totalPrice += guitarPrice.price
+      TotalPriceTemplate = `
+      <div class="sum-wrapper">
+        <p class="final-sum">${guitarPrice}</p>
+      </div>
+    `
+    })
+    return TotalPriceTemplate
+  }
+} */
+
 function removeOrder(removeBtn) {
   const targetRemoveId = cartArr
     .map(function (remove) {
@@ -21,7 +36,6 @@ function removeOrder(removeBtn) {
   cartArr.splice(targetRemoveId, 1)
   const totalDiv = document.querySelector(`.total[data-number="${removeBtn}"]`)
   totalDiv.remove()
-  console.log(cartArr)
 
   renderGuitars()
 }
@@ -29,6 +43,8 @@ function removeOrder(removeBtn) {
 function handleCart() {
   if (cartArr.length > 0) {
     let cartTemplat = ''
+    let totalPrice = 0
+    let priceTemplate = ''
 
     yourOrderH2.style.display = 'block'
 
@@ -40,12 +56,23 @@ function handleCart() {
             <button class="remove" data-remove="${guitarCart.id}">Remove ❌</button>
             </div>
               <div class="price-order">
-                <p class="final-price">${guitarCart.price}</p>
+                <p class="final-price">€ ${guitarCart.price}</p>
               </div>
             </div>
         </div>`
+
+      totalPrice += guitarCart.price
     })
-    return cartTemplat
+    priceTemplate = `
+      <div class="sum-wrapper">
+      <p class="final-sum">${totalPrice}</p>
+    </div>
+      `
+    return cartTemplat + priceTemplate
+  } else if (cartArr.length <= 0) {
+    yourOrderH2.style.display = 'none'
+    const sumWrapper = document.querySelector('.sum-wrapper')
+    sumWrapper.remove()
   }
 }
 
