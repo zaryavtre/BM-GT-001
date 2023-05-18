@@ -6,25 +6,12 @@ const yourOrderH2 = document.querySelector('.your-order')
 document.addEventListener('click', function (e) {
   if (e.target.dataset.number) {
     handleCartButton(e.target.dataset.number)
+    addPriceValues()
   } else if (e.target.dataset.remove) {
     removeOrder(e.target.dataset.remove)
+    addPriceValues()
   }
 })
-
-/* function priceTotal() {
-  if (cartArr.length > 0) {
-    let TotalPriceTemplate = ''
-    cartArr.forEach((guitarPrice) => {
-      totalPrice += guitarPrice.price
-      TotalPriceTemplate = `
-      <div class="sum-wrapper">
-        <p class="final-sum">${guitarPrice}</p>
-      </div>
-    `
-    })
-    return TotalPriceTemplate
-  }
-} */
 
 function removeOrder(removeBtn) {
   const targetRemoveId = cartArr
@@ -40,11 +27,32 @@ function removeOrder(removeBtn) {
   renderGuitars()
 }
 
+function addPriceValues() {
+  let totalPrice = 0
+  let priceTemplate = ''
+
+  const priceValues = cartArr.map(function (num) {
+    return num.price
+  })
+
+  const finalPrice = priceValues.reduce((acc, curr) => acc + curr, totalPrice)
+
+  priceTemplate = `
+  <div class="sum-wrapper">
+  <p class="final-sum">${finalPrice}</p>
+</div>
+  `
+
+  document.querySelector('.super-total').innerHTML = priceTemplate
+
+  if (finalPrice === 0) {
+    document.querySelector('.sum-wrapper').remove()
+  }
+}
+
 function handleCart() {
   if (cartArr.length > 0) {
     let cartTemplat = ''
-    let totalPrice = 0
-    let priceTemplate = ''
 
     yourOrderH2.style.display = 'block'
 
@@ -60,19 +68,10 @@ function handleCart() {
               </div>
             </div>
         </div>`
-
-      totalPrice += guitarCart.price
     })
-    priceTemplate = `
-      <div class="sum-wrapper">
-      <p class="final-sum">${totalPrice}</p>
-    </div>
-      `
-    return cartTemplat + priceTemplate
-  } else if (cartArr.length <= 0) {
+    return cartTemplat
+  } else if (cartArr.length === 0) {
     yourOrderH2.style.display = 'none'
-    const sumWrapper = document.querySelector('.sum-wrapper')
-    sumWrapper.remove()
   }
 }
 
@@ -83,6 +82,7 @@ function handleCartButton(guitarNumber) {
 
   cartArr.push(targetGuitarId)
   document.querySelector('.items-here').innerHTML = handleCart()
+
   renderGuitars()
 }
 
