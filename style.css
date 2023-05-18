@@ -130,7 +130,6 @@ button {
 }
 
 .cart-section {
-  height: 250px;
   padding: 25px;
   display: flex;
   gap: 20px;
@@ -172,4 +171,45 @@ button {
 
 .remove:hover {
   text-decoration-color: black;
+}
+
+.sum-wrapper {
+  border-top: solid 1px rgba(0, 0, 0, 0.23);
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.the-total {
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.checkout {
+  width: 100%;
+  height: 45px;
+  background-color: transparent;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1rem;
+  color: black;
+  border: solid 1.5px black;
+  transition: all 300ms;
+}
+
+.checkout:hover {
+  width: 100%;
+  height: 45px;
+  background-color: black;
+  font-family: 'Noto Sans', sans-serif;
+  color: white;
 }
