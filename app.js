@@ -13,6 +13,10 @@ document.addEventListener('click', function (e) {
   }
 })
 
+function openCheckout() {
+  
+}
+
 function removeOrder(removeBtn) {
   const targetRemoveId = cartArr
     .map(function (remove) {
@@ -39,14 +43,18 @@ function addPriceValues() {
 
   priceTemplate = `
   <div class="sum-wrapper">
-  <p class="final-sum">${finalPrice}</p>
-</div>
+    <h2 class="the-total">Total</h2>
+    <p class="final-sum">€${finalPrice}</p>
+  </div>
   `
 
   document.querySelector('.super-total').innerHTML = priceTemplate
+  document.querySelector('.btn-wrap').innerHTML = `<button class="checkout">Checkout</button>`
 
   if (finalPrice === 0) {
     document.querySelector('.sum-wrapper').remove()
+    yourOrderH2.style.display = 'none'
+    document.querySelector('.checkout').remove()
   }
 }
 
@@ -70,9 +78,7 @@ function handleCart() {
         </div>`
     })
     return cartTemplat
-  } else if (cartArr.length === 0) {
-    yourOrderH2.style.display = 'none'
-  }
+  } 
 }
 
 function handleCartButton(guitarNumber) {
