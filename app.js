@@ -26,8 +26,15 @@ cardBtn.addEventListener('click', function (e) {
   openCheckout()
   renderGuitars()
 
-  orderedTemplate = `<div class="post-order">
-    <p>Thanks, ${name}! You're Trve Kvlt!</p>                    
+  orderedTemplate = `<div style="background-color: black; 
+  font-family: 'Noto Sans', sans-serif; padding: 1em;
+    color: white; display: flex; justify-content: center;">
+      <p style="font-family: 'Noto Sans', sans-serif;
+        color: white; font-weight: 700; font-size: 1.125em;">
+        Thanks, ${name} ! You're <span style="margin-lefT: 0.2em;
+        font-family:'Metal Mania', cursive; letter-spacing: 5px; font-size: 1.5em;">
+        Trve Kvlt</span>!
+      </p>                    
   </div>`
 
   document.querySelector('.cart-section').innerHTML = orderedTemplate
