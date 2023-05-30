@@ -13,7 +13,8 @@ h3 {
   margin: 0;
 }
 
-button, input {
+button,
+input {
   outline: none;
   background-color: transparent;
   border: none;
@@ -235,6 +236,8 @@ button, input {
   flex-direction: column;
   gap: 1em;
   min-width: 355px;
+  background-color: white;
+  padding: 1em;
 }
 
 .form-input-wrapper {
@@ -245,6 +248,31 @@ button, input {
 
 #form-name {
   background-color: white;
-  border-radius: 1em;
+  border: solid 1px black;
+  padding: 1em;
+  font-family: 'Noto Sans', sans-serif;
+  color: rgb(22, 22, 22);
 }
 
+#form-number {
+  background-color: white;
+  border: solid 1px black;
+  padding: 1em;
+  font-family: 'Noto Sans', sans-serif;
+  color: rgb(22, 22, 22);
+}
+
+#form-cvv {
+  background-color: white;
+  border: solid 1px black;
+  padding: 1em;
+  font-family: 'Noto Sans', sans-serif;
+  color: rgb(22, 22, 22);
+}
+
+.card-btn {
+  font-family: 'Noto Sans', sans-serif;
+  color: white;
+  background-color: black;
+  padding: 1em;
+}
