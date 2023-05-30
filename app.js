@@ -2,6 +2,7 @@ import { guitarsData } from '/data.js'
 
 const cartArr = []
 const yourOrderH2 = document.querySelector('.your-order')
+const cardBtn = document.querySelector('.card-btn')
 
 document.addEventListener('click', function (e) {
   if (e.target.dataset.number) {
@@ -10,11 +11,30 @@ document.addEventListener('click', function (e) {
   } else if (e.target.dataset.remove) {
     removeOrder(e.target.dataset.remove)
     addPriceValues()
+  } else if (e.target.dataset.order) {
+    openCheckout()
   }
 })
 
+cardBtn.addEventListener('click', function (e) {
+  e.preventDefault()
+  const form = document.querySelector('.checkout-form')
+  let orderedTemplate = ''
+
+  const orderForm = new FormData(form)
+  const name = orderForm.get('name')
+  openCheckout()
+  renderGuitars()
+
+  orderedTemplate = `<div class="post-order">
+    <p>Thanks, ${name}! You're Trve Kvlt!</p>                    
+  </div>`
+
+  document.querySelector('.cart-section').innerHTML = orderedTemplate
+})
+
 function openCheckout() {
-  
+  document.querySelector('.full-page-overlay').classList.toggle('overlay-d')
 }
 
 function removeOrder(removeBtn) {
@@ -49,7 +69,9 @@ function addPriceValues() {
   `
 
   document.querySelector('.super-total').innerHTML = priceTemplate
-  document.querySelector('.btn-wrap').innerHTML = `<button class="checkout">Checkout</button>`
+  document.querySelector(
+    '.btn-wrap'
+  ).innerHTML = `<button class="checkout" data-order="orderBtn">Checkout</button>`
 
   if (finalPrice === 0) {
     document.querySelector('.sum-wrapper').remove()
@@ -78,7 +100,7 @@ function handleCart() {
         </div>`
     })
     return cartTemplat
-  } 
+  }
 }
 
 function handleCartButton(guitarNumber) {

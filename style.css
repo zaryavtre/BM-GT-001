@@ -226,7 +226,7 @@ input {
   right: 0;
   background-color: rgba(46, 46, 46, 0.512);
   backdrop-filter: blur(8px);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -275,4 +275,8 @@ input {
   color: white;
   background-color: black;
   padding: 1em;
+}
+
+.overlay-d {
+  display: flex;
 }
